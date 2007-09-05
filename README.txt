@@ -24,7 +24,7 @@ contact.module must be enabled.
 
 Installation
 ------------
-  1. Copy contact_lists folder to modules/.
+  1. Copy contact_lists folder to sites/all/modules/.
   2. Check contact.module is enabled
   3. Enable Contact Forms module
 
