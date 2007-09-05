@@ -32,7 +32,7 @@ Installation
 Upgrading
 ---------
 If you are upgrading from an older version of Contact Lists
-Disable and uninstall the old version then delete the old folder
+Disable and uninstall the old version then delete the contact_list folder
 before you upload and enable the new version.
 
 
@@ -50,7 +50,7 @@ be made with the following code [using the drupal link function]
 print l('Email Jill Jones', 'contact/Jill_Jones');
 ?>
 This page can be set as the fall back page if a contact/category
-path is entered that doesn\'t exist.
+path is entered that doesn't exist.
 
 
 Snippets
@@ -82,3 +82,4 @@ alienbrain
 incrn8
 joachim
 mfredrickson
+jandd
