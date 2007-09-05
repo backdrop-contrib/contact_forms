@@ -75,7 +75,7 @@ function contact_forms_form_alter($form_id, &$form) {
   if ($form_id == 'contact_admin_settings') {
     if (drupal_get_path('module', 'contact_list') != ''){
       $contact_list_path = drupal_get_path('module', 'contact_list');
-      drupal_set_message('WARNING: You have both the Contact Forms and Contact List modules installed. The Contact Forms module replaces the Contact List module and has disabled it. Please delete the following files.<ul><li>'. $contact_list_path .'/contact_list.info</li><li>'. $contact_list_path .'/contact_list.install</li><li>'. $contact_list_path .'/contact_list.module</li></ul>Don\'t delete any other files in that directory as they are for the Contact Forms module. If you unable to delete these files don\'t panic because everything will still work OK. You will just get this annoying message until you do.', $type = 'error');
+      drupal_set_message('WARNING: You have both the Contact Forms and Contact List modules installed. The Contact Forms module replaces the Contact List module and has disabled it. Please delete the following folder.<ul><li>'. $contact_list_path .'</li></ul> If you unable to delete this folder don\'t panic because everything will still work OK. You will just get this annoying message until you do.', $type = 'error');
     }
 
     // get example contact form path
