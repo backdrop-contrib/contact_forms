@@ -22,6 +22,7 @@ function contact_forms_menu($may_cache) {
         $items[] = array(
           'path' => 'contact/'. $name,
           'access' => TRUE,
+          'type' => MENU_CALLBACK,
         );
       }
     }
