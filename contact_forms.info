@@ -1,4 +1,5 @@
 ; $Id$
 name = Contact Forms
 description = Creates individual contact pages from contact form categories.
-dependencies = contact
+dependencies[] = contact
+core = 6.x
