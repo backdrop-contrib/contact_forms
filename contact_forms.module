@@ -12,37 +12,30 @@
 /**
  * Implementation of hook_menu()
  */
-function contact_forms_menu($may_cache) {
-  $items = array();
-  if ($may_cache) {
-    // instead of hijacking the path 'contact' we create a path for each contact category
+function contact_forms_menu() {
+      // instead of hijacking the path 'contact' we create a path for each contact category
     $result = db_query('SELECT category FROM {contact}');
-
-    if (db_num_rows($result)) {
+    $num = db_result(db_query("SELECT COUNT(*) FROM {contact}"));
+    if ($num) {
       foreach (db_fetch_object($result) as $contact) {
         $name = str_replace(' ', '_' ,$contact->category);
 
-        $items[] = array(
-          'path' => 'contact/'. $name,
-          'access' => TRUE,
+        $items['contact/%name'] = array(
+          'page arguments' => array('$name'),
+          'access arguments' => array(1), // ??????????????
           'type' => MENU_CALLBACK,
+
         );
       }
     }
-  }
   return $items;
 }
 
 /**
  * Implementation of hook_form_alter()
  */
-function contact_forms_form_alter($form_id, &$form) {
+function contact_forms_form_alter(&$form, $form_state, $form_id) {
   $path = $_GET['q'];
-
-  // check and disable contact_list.module
-  if ( module_exists('contact_forms') && module_exists('contact_list')) {
-     module_disable( array('contact_list'));
-  }
 
   // redirect contact if another fall back page is defined
   if ($path == 'contact' && variable_get('contactform_redirect', 'contact') != 'contact') {
@@ -54,8 +47,9 @@ function contact_forms_form_alter($form_id, &$form) {
 
     $category = str_replace(  '_' , ' ' , arg(1));
     $query =  db_query("SELECT * FROM {contact} WHERE category = '%s'", $category);
+    $num = db_result(db_query("SELECT COUNT(*) FROM {contact} WHERE category = '%s'", $category));
     //if category doesn't exist redirect to 'contact' or User Defined Page
-    if (!db_num_rows($query)) {
+    if (!$num) {
       drupal_goto(variable_get('contactform_redirect', 'contact'));
     }
     $categories_data =  db_fetch_array($query);
