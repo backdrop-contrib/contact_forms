@@ -22,7 +22,7 @@ function contact_forms_install() {
 function contact_forms_uninstall() {
 
   // remove variables
-  variable_del('contact_form_information');
+  variable_del('contactforms_information');
   variable_del('contactform_title');
   variable_del('contactform_redirect');
 
