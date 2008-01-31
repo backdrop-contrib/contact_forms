@@ -54,8 +54,8 @@ function contact_forms_form_alter(&$form, $form_state, $form_id) {
     }
     $categories_data =  db_fetch_array($query);
 
-    $contact_form_var = variable_get('contactform_title', 'contact !category');
-    drupal_set_title(t(variable_get('contactform_title', 'contact !category'), array('!category' => $categories_data['category'])));
+    $contact_form_var = variable_get('contactform_title', 'Contact !category');
+    drupal_set_title(t(variable_get('contactform_title', 'Contact !category'), array('!category' => $categories_data['category'])));
 
     $form['contact_information'] = array(
       '#type' => 'markup',
@@ -71,10 +71,6 @@ function contact_forms_form_alter(&$form, $form_state, $form_id) {
 
   // Alter contact settings form
   if ($form_id == 'contact_admin_settings') {
-    if (drupal_get_path('module', 'contact_list') != ''){
-      $contact_list_path = drupal_get_path('module', 'contact_list');
-      drupal_set_message('WARNING: You have both the Contact Forms and Contact List modules installed. The Contact Forms module replaces the Contact List module and has disabled it. Please delete the following folder.<ul><li>'. $contact_list_path .'</li></ul> If you unable to delete this folder don\'t panic because everything will still work OK. You will just get this annoying message until you do.', $type = 'error');
-    }
 
     // get example contact form path
     $query =  db_fetch_object(db_query("SELECT * FROM {contact} LIMIT 1"));
@@ -94,7 +90,7 @@ $form['contact_form_information'] = array(
       '#title' => t('Contact Forms Additional information'),
       '#weight' => 0,
       '#default_value' => variable_get('contactforms_information', t('You can send !category a message using the contact form below.')),
-      '#description' => t('Information to show on the individual <a href="!form">contact pages</a>. Can be anything from submission guidelines to your postal address or telephone number. To place the category name in your message use the wildcard "@category" e.g. You can send !category a message using the contact form below.', array('@form' => url('contact/'.$name))),
+      '#description' => t('Information to show on the individual <a href="!form">contact pages</a>. Can be anything from submission guidelines to your postal address or telephone number. To place the category name in your message use the wildcard "!category" e.g. You can send !category a message using the contact form below.', array('@form' => url('contact/'.$name))),
     );
 
     $form['contactform_redirect'] = array(
@@ -110,7 +106,7 @@ $form['contact_form_information'] = array(
     $form['contactform_title'] = array(
       '#type' => 'textfield',
       '#title' => t('Contact Form Title'),
-      '#default_value' => variable_get('contactform_title', 'contact !category'),
+      '#default_value' => variable_get('contactform_title', 'Contact !category'),
       '#weight' => -3,
       '#maxlength' => 60,
       '#description' => t('The title you would like displayed on the <a href="!form">contact page</a>. To place the category name in the title use the wildcard "!category".', array('!form' => url('contact/'.$name))),
