@@ -10,12 +10,21 @@ down category menu by generating a form, and a
 unique path, for each of the contact form categories.
 
 The path 'contact/{category}' generates a contact form
-for that category with a title = 'contact {category}'.
+for that category with a title = 'Contact {category}'.
+e.g. path 'contact/Jill_Jones' generates a contact form
+for the category 'Jil Jones' with a title = 'Contact jill Jones'.
 
 If a path is entered that does not have a category you
 can specify a page to redirect to. The default fall back
 path is contact.
 
+To define the subject of the generated form the path is as follows
+'contact/{category}/Subject_goes-here'
+e.g. path 'contact/Jill_Jones/Enquiry_about_Sales' generates a contact form
+for the category 'Jil Jones' with a title = 'Contact jill Jones' and the subject
+'Enquiry about Sales'.
+
+NOTE: replace any spaces in the path with underscores.
 
 Requirements
 ------------
@@ -24,7 +33,7 @@ contact.module must be enabled.
 
 Installation
 ------------
-  1. Copy contact_lists folder to sites/all/modules/.
+  1. Copy contact_forms folder to sites/all/modules/.
   2. Check contact.module is enabled
   3. Enable Contact Forms module
 
