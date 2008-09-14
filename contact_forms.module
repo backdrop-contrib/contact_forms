@@ -62,9 +62,18 @@ function contact_forms_form_alter(&$form, $form_state, $form_id) {
       '#value' => t(variable_get('contactforms_information' , 'You can send !category a message using the contact form below.') , array('!category' => $categories_data['category'])),
     );
 
+    $subject = str_replace(  '_' , ' ' , arg(2));
+    
+    $form['subject'] = array('#type' => 'textfield',
+      '#title' => t('Subject'),
+      '#maxlength' => 255,
+      '#value' => $subject,
+      '#required' => TRUE,
+    );
+
     $form['cid'] = array(
       '#type' => 'hidden',
-      '#value' => $categories_data['cid'],    
+      '#value' => $categories_data['cid'],
       '#required' => TRUE,
     );
   }
