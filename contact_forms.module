@@ -67,7 +67,7 @@ function contact_forms_form_alter(&$form, $form_state, $form_id) {
     $form['subject'] = array('#type' => 'textfield',
       '#title' => t('Subject'),
       '#maxlength' => 255,
-      '#value' => $subject,
+      '#default_value' => $subject,
       '#required' => TRUE,
     );
 
