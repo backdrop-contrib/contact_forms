@@ -11,7 +11,7 @@ unique path, for each of the contact form categories.
 
 The path 'contact/{category}' generates a contact form
 for that category with a title = 'Contact {category}'.
-e.g. path 'contact/Jill_Jones' generates a contact form
+e.g. path 'contact/Jill Jones' generates a contact form
 for the category 'Jil Jones' with a title = 'Contact jill Jones'.
 
 If a path is entered that does not have a category you
@@ -19,12 +19,12 @@ can specify a page to redirect to. The default fall back
 path is contact.
 
 To define the subject of the generated form the path is as follows
-'contact/{category}/Subject_goes-here'
-e.g. path 'contact/Jill_Jones/Enquiry_about_Sales' generates a contact form
+'contact/{category}/Subject goes here'
+e.g. path 'contact/Jill Jones/Enquiry about Sales' generates a contact form
 for the category 'Jil Jones' with a title = 'Contact jill Jones' and the subject
 'Enquiry about Sales'.
 
-NOTE: replace any spaces in the path with underscores.
+
 
 Requirements
 ------------
@@ -56,7 +56,7 @@ Create a "Contact Directory" page with a path like 'directory'
 and lay it out how you would like it. Links to the forms can
 be made with the following code [using the drupal link function]
 <?php
-print l('Email Jill Jones', 'contact/Jill_Jones');
+print l('Email Jill Jones', 'contact/Jill Jones');
 ?>
 This page can be set as the fall back page if a contact/category
 path is entered that doesn't exist.
