@@ -98,3 +98,9 @@ $form['contact_form_information'] = array(
     );
   }
 }
+/**
+ * Implementation of hook_menu_alter
+ */
+ function contact_forms_menu_alter(&$items) {
+  $items['contact/%'] = $items['contact'];
+}
