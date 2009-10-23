@@ -5,6 +5,10 @@
  * Implementation of hook_install().
  */
 function contact_forms_install() {
+   //Alter the contact table to add an info field for each category
+   $sql = 'ALTER TABLE {contact} ADD page_info TEXT NULL';
+   db_query($sql);
+   
   // contact_list.module is enabled - disable and put message in watchdog saying contact_forms replaces contact_lists
   watchdog ('Contact Forms', 'contact_forms module installed');
   drupal_set_message(t("Contact Forms module has been enabled. You can edit it's settings at !link",
@@ -22,6 +26,10 @@ function contact_forms_uninstall() {
   variable_del('contactform_title');
   variable_del('contactform_redirect');
 
+  //remove category information field
+  $sql = 'ALTER TABLE {contact} DROP page_info';
+  db_query($sql);
+  
   // clear the cache tables
   cache_clear_all(null, 'cache');
   cache_clear_all(null, 'cache_filter');
