@@ -43,6 +43,6 @@ function contact_forms_uninstall() {
 */
 function contact_forms_update_6100() {
   $ret = array();
-  db_add_field($ret, 'contact', 'page_info', array('type' => 'test', 'not null' => FALSE));
+  db_add_field($ret, 'contact', 'page_info', array('type' => 'text', 'not null' => FALSE));
   return $ret;
 }
