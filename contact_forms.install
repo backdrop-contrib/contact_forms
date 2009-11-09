@@ -6,8 +6,8 @@
  */
 function contact_forms_install() {
   //Alter the contact table to add an info field for each category
-  $sql = 'ALTER TABLE {contact} ADD page_info TEXT NULL';
-  db_query($sql);
+   $ret = array();
+  db_add_field($ret, 'contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
 
   watchdog ('Contact Forms', 'contact_forms module installed');
   drupal_set_message(t("Contact Forms module has been enabled. You can edit it's settings at !link",
@@ -26,8 +26,9 @@ function contact_forms_uninstall() {
   variable_del('contactform_redirect');
 
   //remove category information field
-  $sql = 'ALTER TABLE {contact} DROP page_info';
-  db_query($sql);
+  $ret = array();
+  db_drop_field($ret, 'contact', 'page_info');
+
   
   // clear the cache tables
   cache_clear_all(null, 'cache');
@@ -43,6 +44,6 @@ function contact_forms_uninstall() {
 */
 function contact_forms_update_6100() {
   $ret = array();
-  db_add_field($ret, 'contact', 'page_info', array('type' => 'text', 'not null' => FALSE));
+  db_add_field($ret, 'contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
   return $ret;
 }
