@@ -71,7 +71,7 @@ function contact_forms_form_alter(&$form, $form_state, $form_id) {
     //Set the weight of the category name so It appears above our inserted info area
     $form['category']['#weight']='-1';
 
-  
+
   }
   
   // Alter contact settings form
@@ -135,7 +135,7 @@ function contact_forms_schema_alter(&$schema) {
   // Add field to existing schema.
   $schema['contact']['fields']['page_info'] = array(
     'type' => 'text',
-	'not null' => FALSE,
+	  'not null' => FALSE,
     'size' => 'big',
     'description' => 'Category Page Information Displayed on the individual category pages',
   );
