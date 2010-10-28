@@ -12,7 +12,7 @@ unique path, for each of the contact form categories.
 The path 'contact/{category}' generates a contact form
 for that category with a title = 'Contact {category}'.
 e.g. path 'contact/Jill Jones' generates a contact form
-for the category 'Jill Jones' with a title = 'Contact Jill Jones'. You can use underscore "_" or a dash "-" instead of spaces. 
+for the category 'Jill Jones' with a title = 'Contact Jill Jones'. You can use underscore "_" or a dash "-" instead of spaces.
 
 If a path is entered that does not have a category you
 can specify a page to redirect to. The default fall back

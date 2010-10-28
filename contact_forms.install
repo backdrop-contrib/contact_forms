@@ -1,17 +1,20 @@
 <?php
-// $Id$
+// $Id:
 
 /**
  * Implementation of hook_install().
  */
 function contact_forms_install() {
-  //Alter the contact table to add an info field for each category
-   $ret = array();
-  db_add_field($ret, 'contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
-
+  //Alter the contact table to add an info field and title for each category
+  if (!db_column_exists('contact', 'page_title')) {
+    db_add_field('contact', 'page_title', array('type' => 'text', 'size' => 'normal', 'not null' => FALSE));
+  }
+  if (!db_column_exists('contact', 'page_info')) {
+    db_add_field('contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
+}
   watchdog ('Contact Forms', 'contact_forms module installed');
   drupal_set_message(t("Contact Forms module has been enabled. You can edit it's settings at !link",
-    array( '!link' => l('Administer > Site building > Contact form ',  'admin/build/contact/settings' ) )
+    array( '!link' => l('Administer > Site building > Contact form ',  'admin/structure/contact/settings' ) )
   ));
 }
 
@@ -26,10 +29,9 @@ function contact_forms_uninstall() {
   variable_del('contactform_redirect');
 
   //remove category information field
-  $ret = array();
-  db_drop_field($ret, 'contact', 'page_info');
+  db_drop_field('contact', 'page_title');
+  db_drop_field('contact', 'page_info');
 
-  
   // clear the cache tables
   cache_clear_all(null, 'cache');
   cache_clear_all(null, 'cache_filter');
@@ -37,13 +39,4 @@ function contact_forms_uninstall() {
   cache_clear_all(null, 'cache_page');
 
   watchdog ('Contact Forms', 'Contact Forms module removed');
-}
-
-/**
-* Implementation of hook_update_N()
-*/
-function contact_forms_update_6100() {
-  $ret = array();
-  db_add_field($ret, 'contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
-  return $ret;
 }
