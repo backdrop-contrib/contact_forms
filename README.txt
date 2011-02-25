@@ -1,4 +1,3 @@
-$Id$
 
 CONTACT_FORMS.MODULE
 
