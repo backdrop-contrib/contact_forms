@@ -13,7 +13,7 @@ function contact_forms_install() {
     db_add_field('contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
 }
   watchdog ('Contact Forms', 'contact_forms module installed');
-  drupal_set_message(t("Contact Forms module has been enabled. You can edit it's settings at !link",
+  drupal_set_message(t("Contact Forms module has been enabled. You can edit its settings at !link",
     array( '!link' => l('Administer > Site building > Contact form ',  'admin/structure/contact/settings' ) )
   ));
 }
