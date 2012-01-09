@@ -6,10 +6,10 @@
  */
 function contact_forms_install() {
   //Alter the contact table to add an info field and title for each category
-  if (!db_column_exists('contact', 'page_title')) {
+  if (!db_field_exists('contact', 'page_title')) {
     db_add_field('contact', 'page_title', array('type' => 'text', 'size' => 'normal', 'not null' => FALSE));
   }
-  if (!db_column_exists('contact', 'page_info')) {
+  if (!db_field_exists('contact', 'page_info')) {
     db_add_field('contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
 }
   watchdog ('Contact Forms', 'contact_forms module installed');
@@ -24,9 +24,9 @@ function contact_forms_install() {
 function contact_forms_uninstall() {
 
   // remove variables
-  variable_del('contactforms_information');
-  variable_del('contactform_title');
-  variable_del('contactform_redirect');
+  variable_del('contact_forms_information');
+  variable_del('contact_forms_title');
+  variable_del('contact_forms_redirect');
 
   //remove category information field
   db_drop_field('contact', 'page_title');
