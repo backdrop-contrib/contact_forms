@@ -15,7 +15,7 @@ function contact_forms_menu() {
     'title' => 'Settings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('contact_forms_settings'),
-    'access arguments' => array('access site-wide contact form'),
+    'access arguments' => array('administer contact forms'),
     /*'type' => MENU_NORMAL_ITEM,*/
   );
 
