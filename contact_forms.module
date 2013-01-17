@@ -133,7 +133,7 @@ function contact_forms_form_alter(&$form, $form_state, $form_id) {
     $contact_forms_title = (!$categories_data->page_title) ? variable_get('contact_forms_title', 'Contact @category') : $categories_data->page_title ;
 
     $contact_forms_title = str_replace( '@category', $categories_data->category, $contact_forms_title);
-    drupal_set_title(check_plain($contact_forms_title));
+    drupal_set_title($contact_forms_title);
 
     // Get Additional Info
     $additional_info = (!$categories_data->page_info) ? variable_get('contact_forms_information' , 'You can send @category a message using the contact form below.') : $categories_data->page_info ;
