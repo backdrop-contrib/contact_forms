@@ -1,0 +1,13 @@
+name = Contact forms translation
+description = Makes contact forms additions available for translation.
+dependencies[] = contact
+dependencies[] = contact_forms
+dependencies[] = locale
+dependencies[] = i18n
+dependencies[] = i18n_contact
+dependencies[] = i18n_string
+dependencies[] = variable
+package = Multilingual - Internationalization
+core = 7.x
+files[] = contact_forms_int.install
+files[] = contact_forms_int.module
