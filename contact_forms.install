@@ -14,7 +14,7 @@ function contact_forms_install() {
 }
   watchdog ('Contact Forms', 'contact_forms module installed');
   drupal_set_message(t("Contact Forms module has been enabled. You can edit its settings at !link",
-    array( '!link' => l('Administer > Site building > Contact form ',  'admin/structure/contact/settings' ) )
+    array( '!link' => l('Administer > Structure > Contact form ',  'admin/structure/contact/settings' ) )
   ));
 }
 
