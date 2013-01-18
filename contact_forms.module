@@ -162,6 +162,11 @@ function contact_forms_form_alter(&$form, $form_state, $form_id) {
       '#value' => $categories_data->cid,
       '#required' => TRUE,
     );
+
+    $form['orig_category'] = array(
+      '#type' => 'hidden',
+      '#value' => $categories_data->category,
+    );
   }
 
 
