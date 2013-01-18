@@ -11,7 +11,7 @@ function contact_forms_int_form_contact_site_form_alter(&$form, &$form_state) {
     // Translate the Additional Info string
     $cid = $form['cid']['#value'];
 
-    $page_info = i18n_string_translate('contact:category:' . $cid . ':page_info', $form['contact_information']['#markup']);
+    $page_info = i18n_string_translate('contact:category:' . $cid . ':page_info', $form['contact_information']['#markup'], array('sanitize' => FALSE));
 
     // But the token, @category, isn't translated
     // so if not the default language replace the
