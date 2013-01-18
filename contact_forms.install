@@ -40,3 +40,17 @@ function contact_forms_uninstall() {
 
   watchdog ('Contact Forms', 'Contact Forms module removed');
 }
+
+
+ /**
+ * Add 7.x columns for those upgrading from earlier Drupal version.
+ */
+function contact_forms_update_7000() {
+  //Alter the contact table to add an info field and title for each category
+  if (!db_field_exists('contact', 'page_title')) {
+    db_add_field('contact', 'page_title', array('type' => 'text', 'size' => 'normal', 'not null' => FALSE));
+  }
+  if (!db_field_exists('contact', 'page_info')) {
+    db_add_field('contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
+  }
+}
