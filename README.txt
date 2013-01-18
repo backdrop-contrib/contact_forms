@@ -23,6 +23,15 @@ e.g. path 'contact/Jill Jones/Enquiry about Sales' generates a contact form
 for the category 'Jill Jones' with a title = 'Contact jill Jones' and the subject
 'Enquiry about Sales'.
 
+Multilingual Sites
+------------------
+For use with the Internationalization module enable the Contact forms translation module and for more info see the README file in the contact_forms_int folder which is in the contact_forms folder
+
+Contact Field Compatability
+-------------
+This module works with the contact_field module but needs to be enabled after the contact_field module. If you are having problems with the added fields not displaying in the correct order, disable and enable the contact_forms module and the problem should be solved.
+
+This problem is caused by the weight of contact_field module in the System table needing to be greater than the weight of the contact_forms module. When the contact_forms module is enabled it compares the weights and changes the weight of the contact_field module.
 
 
 Requirements
@@ -35,13 +44,6 @@ Installation
   1. Copy contact_forms folder to sites/all/modules/.
   2. Check contact.module is enabled
   3. Enable Contact Forms module
-
-
-Upgrading
----------
-If you are upgrading from an older version of Contact Lists
-Disable and uninstall the old version then delete the contact_list folder
-before you upload and enable the new version.
 
 
 Usage
@@ -92,3 +94,4 @@ joachim
 mfredrickson
 jandd
 arcaneadam
+Rob C
