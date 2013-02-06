@@ -13,7 +13,7 @@ function contact_forms_install() {
     db_add_field('contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
 }
   watchdog ('Contact Forms', 'contact_forms module installed');
-  drupal_set_message(t("Contact Forms module has been enabled. You can edit its settings at !link",
+  drupal_set_message(t("Contact Forms module has been enabled. Please go to the settings page at !link and choose the space replacement token",
     array( '!link' => l('Administer > Structure > Contact form ',  'admin/structure/contact/settings' ) )
   ));
 }
@@ -53,4 +53,15 @@ function contact_forms_update_7000() {
   if (!db_field_exists('contact', 'page_info')) {
     db_add_field('contact', 'page_info', array('type' => 'text', 'size' => 'big', 'not null' => FALSE));
   }
+}
+
+/**
+* Implementation of hook_update_N()
+*/
+function contact_forms_update_7101() {
+  $ret = array();
+
+  drupal_set_message(t("Contact Forms module has been updated. Please go to the settings page at !link and choose the space replacement token",  array( '!link' => l('Administer > Site building > Contact form ',  'admin/build/contact/settings' ))));
+
+  return $ret;
 }
