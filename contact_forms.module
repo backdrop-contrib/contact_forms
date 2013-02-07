@@ -81,6 +81,7 @@ function contact_forms_settings(){
     '#default_value' => variable_get('contact_forms_space_substitute'),
     '#weight' => -4,
     '#options' => $sub,
+    '#required' => true,
     '#description' => t('Spaces in the category URL can be replaced with a dash or an underscore or not at all.'),
       );
 
@@ -287,7 +288,9 @@ function contact_forms_category_list() {
   $sub_array = sub_array();
   $sub_key = variable_get('contact_forms_space_substitute', 3);
 
-  if ($sub_key != 3) {
+  if ($sub_key == 3) {
+      _contact_forms_error_message();
+  }
     // Loop through the categories and add them to the table.
     foreach ($categories as $category) {
       $title_status = ($category->page_title != '') ? 'Custom' : 'Default';
@@ -322,9 +325,6 @@ function contact_forms_category_list() {
     }
 
     return theme('table', array('header' => $header, 'rows' => $rows));
-  } else {
-    _contact_forms_error_message();
-  }
 }
 
 /**
