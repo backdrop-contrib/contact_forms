@@ -1,0 +1,8 @@
+{
+    "_config_name": "contact_forms.settings",
+    "space_substitute": "1",
+    "redirect": "contact",
+    "default_title": "Contact @category",
+    "default_information": "You can send @category a message using the contact form below.",
+    "title": "Contact Directory"
+}
