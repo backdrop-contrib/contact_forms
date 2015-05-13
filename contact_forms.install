@@ -23,7 +23,6 @@ function contact_forms_install() {
   $config->setData($config_data);
   $config->save();
 
-  watchdog ('Contact Forms', 'contact_forms module installed');
   backdrop_set_message(t("Contact Forms module has been enabled. Please go to the settings page at !link and choose the space replacement token",
     array( '!link' => l('Administer > Structure > Contact form ',  'admin/structure/contact/settings' ) )
   ));

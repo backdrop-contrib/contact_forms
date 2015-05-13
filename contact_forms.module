@@ -83,7 +83,7 @@ function contact_forms_settings_form($form, &$form_state){
     '#title' => t('Title on main contact page.'),
     '#weight' => -1,
     '#default_value' => $title,
-    '#description' => t('.'),
+    //'#description' => t('.'),
    );
 
   $form['actions']['submit'] = array(
@@ -206,7 +206,6 @@ function contact_forms_form_alter(&$form, $form_state, $form_id) {
     $form['category']['#weight']='-2';
 
     // Add validation and submit functions
-    $form['#validate'][] = 'contact_forms_edit_form_validate';  // do we need this?
     $form['#submit'][] = 'contact_forms_edit_form_submit';
   }
 
@@ -227,7 +226,6 @@ function contact_forms_edit_form_submit($form, &$form_state) {
 
   // if creating new category need to get new cid
   if (!isset($cid)) {
-
     $config_data = $form_state['categories_data'];
     $categories = $config_data['categories'];
 
@@ -248,7 +246,7 @@ function contact_forms_edit_form_submit($form, &$form_state) {
       'page_title' => $page_title,
       'page_info' => $page_info
     );
-
+  
   $config->setData($config_data);
   $config->save();
 }
@@ -303,12 +301,12 @@ function contact_forms_theme() {
         ),
       'template' => 'templates/contact-forms-page',
     ),
-    'contact_forms_contact' => array(
+    /*'contact_forms_contact' => array(
       'variables' => array(
         'categories' => NULL,
         ),
       'template' => 'templates/contact-forms-contact',
-    ),
+    ),*/
   );
 }
 
