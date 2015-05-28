@@ -4,4 +4,5 @@ dependencies[] = contact
 version = BACKDROP_VERSION
 backdrop = 1.x
 package = Contact Forms
+type = module
 configure = admin/structure/contact/settings
