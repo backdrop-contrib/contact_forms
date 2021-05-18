@@ -366,7 +366,7 @@ function contact_forms_category_list() {
       $selected,
       $title_status,
       $info_status,
-      l(t('Edit'), 'admin/structure/contact/edit/' . $category['cid']),
+      l(t('Configure'), 'admin/structure/contact/configure/' . $category['cid']),
       l(t('Delete'), 'admin/structure/contact/delete/' . $category['cid']),
     );
   }
