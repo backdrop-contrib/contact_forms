@@ -234,9 +234,12 @@ function contact_forms_edit_form_submit($form, &$form_state) {
     foreach ($categories as $key => $cat) {
       $cids[] = $cat['cid'];
     }
-    $max_cid = max($cids);
-
-    $cid = $max_cid + 1;
+    if (!empty($cids)) {
+      $max_cid = max($cids);
+      $cid = $max_cid + 1;
+    } else {
+      $cid = 1;
+    }
   }
 
   $config = config('contact_forms.extras');
